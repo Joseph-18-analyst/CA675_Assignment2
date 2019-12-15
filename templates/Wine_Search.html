@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wine Search Tool</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script type='text/javascript' src='https://eu-west-1a.online.tableau.com/javascripts/api/viz_v1.js'></script>
+  <script>
+    $( document ).ready(function() {
+        func1();
+      });
+
+    function func1()
+    {
+      $('#countries').hide();
+      $('#vis').hide(); 
+      $('#home').show();
+    }
+    function func2()
+    {
+      $('#home').hide();
+      $('#vis').hide();  
+      $('#countries').show();    
+    }
+    function func3()
+    {
+      $('#home').hide();
+      $('#countries').hide();
+      $('#vis').show(); 
+    
+    }
+  </script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wine_search.css') }}">
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Wine Analytics Dashboard</h1> 
+</div>
+<div class="background">
+<div class="topnav transbox">
+        <button class="active" onclick="func1();">Home</button>
+        <button onclick="func2();">Countries</button>
+        <button onclick="func3();">Visualisation</button>
+        <!-- <a class="active" onclick="func1();">Home</a>
+        <a  onclick="func2();">Countries</a>
+        <a  onclick="func3();">Visualisation</a> -->
+</div>
+
+
+
+
+<div id="vis">
+
+		
+		
+    <div class='tableauPlaceholder' id='viz1576238477173' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wi&#47;Wine_Analytics&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='Wine_Analytics&#47;Dashboard1' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wi&#47;Wine_Analytics&#47;Dashboard1&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+          </object>
+        </div>
+        <script type='text/javascript'>                    
+          var divElement = document.getElementById('viz1576238477173'); 
+          var vizElement = divElement.getElementsByTagName('object')[0]; 
+          if (divElement.offsetWidth > 800) { 
+            vizElement.style.width = '100%'; 
+            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; 
+          } else if (divElement.offsetWidth > 500) { 
+            vizElement.style.width = '100%'; 
+            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; 
+          } else { 
+            vizElement.style.width = '100%'; 
+            vizElement.style.height = '1427px'; 
+          } 
+          var scriptElement = document.createElement('script'); 
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; 
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+        </script>
+
+
+
+
+
+</div>
+
+
+<div id="home" class="divpadding transboxbg">
+  <br>
+  <br>
+  <H3>Introduction</H3><br>
+  	<p>
+	  <p>The project is a wine analytics dashboard that allows the users to see different varieties of wines prevalent across 7 different countries based on features like province, variety, price and the points. The wine dataset was particularly taken into consideration for the simple fact that it can give a theoretical analysis as to which wine is better of the lot across 7 major wine producing countries of the world. The dataset also included several features such as variety, price, location, points, etc. which play a key role in the choice of wine by different individuals across this country, so it laid a strong foundation in the meaningful analysis.
+
+	  <br><br>We developed a web application where users can see the appropriate analysis, we have done by the means of knowing wine varieties across these 7 countries. Also, the web app informs the user about the wines that are famous in that country. Further appropriate visualizations are shown based on the wine variety, price, location, ratings, etc. using visualisations such as geographical maps.
+	  </p><br>
+	  
+	  <p>
+			The dataset which we are using in our Web App is taken from Kaggle. The dataset represents the
+			wine reviews data collected from different countries that have different attributes for the ratings
+			of wine and much more information. The data set is a CSV file of 50.6 Mb, having 16 columns
+			and approximately 130 thousand rows. The columns contain information such as Country, Points,
+			Price, etc.			
+	  </p>
+    
+   </p>
+</div>
+
+<div id="countries" class="divpadding transboxbg">
+    <br><br>
+    <H3>Major Countries</H3><br>
+    <h4>7 Major wine producing countries were used for the analysis</h4>
+    <p>
+      <h4><b>France</b></h4><br>
+      <p>While France and Italy compete for the top wine production region of the world they are also reducing wine production every year. France has lowered production by 11% since 2007.
+        <br><b><i>Major Grapes :</i></b> Merlot, Grenache, Trebbiano Toscano, Syrah, Cabernet Sauvignon, Carignan, Chardonnay, Cabernet Franc, Pinot Noir, Gamay, Sauvignon Blanc</p><br><br>
+
+      <h4><b>Italy</b></h4><br>
+      <p>Italy may be second to France, but there is a growing trend in both countries to remove vineyards. Italy has reduced their production by at least 7% since 2007.<br><b><i>Major Grapes :</i></b>Sangiovese, Montepulciano, Merlot, Trebbiano Toscano, Nero d’Avola, Barbera, Pinot Grigio, Prosecco</p><br><br>
+
+      <h4><b>Spain</b></h4><br>
+	  <p>Spain is home to the largest vineyard acreage in the world. Despite this fact, Spain also has much lower wine yields than neighboring France and Italy resulting in less total wine.<br><b><i>Major Grapes :</i></b> Tempranillo, Airén, Garnacha, Monastrell, Bobal</p><br><br>
+	  
+	  <h4><b>United States</b></h4><br>
+	  <p>90% of wine from the United States is from California. California is home to the world’s largest wine producer, Gallo, in Modesto, CA.<br><b><i>Major Grapes :</i></b> Cabernet Sauvignon, Chardonnay, Merlot, Pinot Noir, Zinfandel, Sauvignon Blanc</p><br><br>
+	  
+	  <h4><b>Argentina</b></h4><br>
+	  <p>Argentina continues to grow their wine production year after year resulting in the highest growth rate (8%) of the top 5 wine producers in the world. Argentina relies on wine exports.<br><b><i>Major Grapes :</i></b> Malbec, Bonarda, Chardonnay, Cabernet Sauvignonl</p><br><br>
+	  
+	  <h4><b>Australia</b></h4><br>
+	  <p>Australia relies primarily on the wine export market. Since the US dollar has weakened, Australia is expanding their wine marketing in Hong Kong and Asia.<br><b><i>Major Grapes :</i></b> Shiraz (Syrah), Chardonnay</p><br><br>
+	  
+	  <h4><b>Canada</b></h4><br>
+      <p>Most of Canada’s wine output is produced in British Columbia, in the west, and Ontario, in the east.Very small amounts of wine are also made in Alberta and Nova Scotia.<br><b><i>Major Grapes :</i></b> Cabernet Sauvignon, Chardonnay, Merlot, Pinot Noir, Zinfandel, Sauvignon Blanc</p><br><br>
+    </p>
+    
+
+    
+
+</div>
+
+</div>
+</body>
+<footer></footer>
+</html>
