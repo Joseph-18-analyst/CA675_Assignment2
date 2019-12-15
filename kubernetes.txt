@@ -1,0 +1,15 @@
+docker build -t gcr.io/ca675-wine/wine:v4 .
+
+docker push gcr.io/ca675-wine/wine:v4
+
+docker run --rm -p 5000:5000 gcr.io/ca675-assignment2/wine:v4
+
+gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project ca675-assignment2
+
+kubectl create deployment wine-app --image=gcr.io/ca675-assignment2/wine:v4
+
+kubectl get pods
+
+kubectl expose deployment wine-app --type=LoadBalancer --port 80 --target-port 5000
+
+kubectl get service
