@@ -1,0 +1,52 @@
+SCALA/SPARK Loading the wine data set onto the Hadoop file system in the Google Cloud Platform.
+
+* After uploading the file we read the file from Hadoop location to spark location
+
+* NOTE: The below code should be run in spark-shell.
+
+>>val wine_data = spark.read.format("csv").option("header", 	"true").load("/tmp/spark_data/winemag-data-130k-v2.csv")
+
+* Below command will show the columns present in the val wine_data:
+>>wine_data.columns
+
+* This is an optional command which  is used to call the columns in different syntax:
+>>import org.apache.spark.sql.functions.{expr, col, column}
+
+
+* After the columns are inserted we will only slect those columns which will be useful to us for the visulaization:
+	
+>>val wine_data_cols = wine_data.select(col("country"), col("description"), column("designation"), column("points"), 	column("price"), column("province"), column("region_1"), column("title"), column("variety"), column("winery"))
+
+* This command will show columns present in the columns selected
+>>wine_data_cols.columns
+
+* Now we clean the data removing all "NULL" values from the columns
+>>val wine_data_filter = 	wine_data_cols.filter(col("price").isNotNull)
+>>val wine_data_filter1 = 	wine_data_filter.filter(col("region_1").isNotNull)
+>>val wine_data_filter2 = 	wine_data_filter1.filter(col("variety").isNotNull)
+
+
+* The final table after all the cleaning will be saved in "wine_data_filter2".
+* Which will be used for further visualization of the data.
+
+*Now we store the table in a data frame into a cleaned CSV file 
+
+>>wine_data_filter2.wrie.fromat(“csv”).savefile(/tmp/spark_data/WineDatasetClean_new.csv)
+
+
+*After having A fully cleaned CSV file we then Use BiG Query To Create Bucket to connect It to Tableau.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
